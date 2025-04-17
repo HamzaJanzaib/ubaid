@@ -6,7 +6,7 @@ module.exports.register = async (req, res) => {
     try {
         const { username, email, password } = req.body;
         if (!username || !email || !password) {
-            return res.status(400).json({ message: 'All fields are required' });
+            return res.status(400).json({ message: 'All fields are required' });x
         }
 
         const user = await UserModel.findOne({ email });
@@ -23,6 +23,7 @@ module.exports.register = async (req, res) => {
         console.log(newUser);
         res.status(201).json({ message: 'User created successfully' });
     } catch (err) {
+        console.log(err.message);
         res.status(500).json({ message: err.message });
     }
 }
